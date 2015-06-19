@@ -1,0 +1,9 @@
+Your public key
+
+c01e0e93e1b3107524b76e01c3b53166
+Your private key
+
+a037042ac7ca73920fcf20fee30ab5d1cd53e7b6
+
+
+developer.marvel.com

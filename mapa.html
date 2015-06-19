@@ -1,0 +1,124 @@
+
+
+
+
+
+
+
+
+ 
+
+  
+
+
+
+
+<style type="text/css">
+  #map-canvas { height: 100% }
+    .flex-direction-nav{
+        position:absolute;
+    }
+  .m-manu{
+      margin-top:75px;
+  }
+  .m-manu a{
+      //display:inline-block;
+      width:17%;
+      margin:1%;
+      float:left;
+      text-align:center;
+
+  }
+  .models-lineup h2{
+      font-size:16px;
+  }
+</style>
+<script type="text/javascript"
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBxdnqGx5VjPQ9d7JTAspzDIyfnhmMzdk0&sensor=false">
+</script>
+<script type="text/javascript">
+
+  function initialize() {
+    var styles = [
+      // {
+        // "stylers": [
+        //  { "saturation": -100 },
+        //  { "gamma": 0.25 }
+        // ]
+      //},
+      {
+        "featureType": "poi",
+        "elementType": "labels",
+        "stylers": [
+          { "visibility": "off" }
+        ]
+      },{
+        "featureType": "transit",
+        "stylers": [
+          { "visibility": "off" }
+        ]
+      },{
+      }
+    ];
+
+    var pinimage = 'pin.png';
+    var mapOptions = {
+      center: myLatlng,
+      zoom: 40,
+      scrollwheel: true,
+    };
+    var map = new google.maps.Map(document.getElementById("map-canvas"),
+        mapOptions);
+    var myLatlng = new google.maps.LatLng(25.764211,-100.294404);
+    var marker = new google.maps.Marker({
+        position: myLatlng,
+        map: map,
+        icon: pinimage
+    });
+    var myLatlng2 = new google.maps.LatLng(25.63303625,-100.30448914);
+    var marker2 = new google.maps.Marker({
+          position: myLatlng2,
+          map: map,
+          icon: pinimage
+    });
+
+     var myLatlng3 = new google.maps.LatLng(25.6688557,-100.2594078);
+    var marker3 = new google.maps.Marker({
+          position: myLatlng3,
+          map: map,
+          icon: pinimage
+    });
+     
+      
+
+      var markers   = [marker, marker2, marker3];
+      var bounds = new google.maps.LatLngBounds();
+      for(i=0;i<markers.length;i++) {
+          bounds.extend(markers[i].getPosition());
+      }
+
+      map.fitBounds(bounds);
+    map.setOptions({styles: styles});
+  }
+  google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+  <div id="mapRow">
+    <div class="mapwrap">
+      <div id="map-canvas"></div>
+            <div class="mapbox">
+                <h2>OBTENER DIRECCIONES PARA</h2>
+                <form action="http://maps.google.com/maps" method="get" target="_blank">
+                    <select name="daddr" >
+                        <option value="">Seleccione Sucursal</option>
+                        <option value="Car One Americana Ruiz Cortines, Av Ruiz Cortinez, Mitras Centro, Monterrey, N.L.">Car One</option>
+                        <option value="Carretera a Reynosa 8787, Cruz con Avenida Mexico, 67199 Guadalupe, Nuevo Leon, Mexico">Rivero Guadalupe</option>
+                        <option value="Avenida Gómez Morín 402 Villas de Aragón, 66273 San Pedro Garza García, Nuevo León ">Rivero Gómez Morín</option>
+                        <option value="25.657773,-100.384503"> Rivero Humberto Lobo</option>
+                    </select>
+                    <input type="text" name="saddr" placeholder="Escribir Dirección" />
+                    <input type="image" src="<?php echo get_stylesheet_directory_uri(); ?>/images/search-icon-map.png">
+                </form>
+            </div>
+    </div>
+  </div>
+  
